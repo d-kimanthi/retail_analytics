@@ -1,0 +1,65 @@
+{
+  "data": {
+    "name": "Retail Sales Dashboard",
+    "widgets": [
+      {
+        "type": "scorecard",
+        "title": "Total Sales",
+        "field": "total_sales",
+        "aggregation": "SUM"
+      },
+      {
+        "type": "scorecard",
+        "title": "Total Units Sold",
+        "field": "total_quantity",
+        "aggregation": "SUM"
+      },
+      {
+        "type": "scorecard",
+        "title": "Total Stores",
+        "field": "store_id",
+        "aggregation": "COUNT_DISTINCT"
+      },
+      {
+        "type": "time_series",
+        "title": "Sales Over Time",
+        "dimension": "sale_date",
+        "metric": "total_sales"
+      },
+      {
+        "type": "bar_chart",
+        "title": "Sales by Product",
+        "dimension": "product",
+        "metric": "total_sales"
+      },
+      {
+        "type": "bar_chart",
+        "title": "Sales by Store",
+        "dimension": "store_id",
+        "metric": "total_sales"
+      },
+      {
+        "type": "table",
+        "title": "Daily Sales Breakdown",
+        "columns": [
+          "sale_date",
+          "store_id",
+          "product",
+          "total_quantity",
+          "total_sales"
+        ]
+      }
+    ],
+    "filters": [
+      {
+        "type": "date_range",
+        "field": "sale_date"
+      },
+      {
+        "type": "dropdown",
+        "field": "store_id"
+      }
+    ]
+  },
+  "note": "After importing this file into Looker Studio, you must manually map fields to your Athena data source."
+}

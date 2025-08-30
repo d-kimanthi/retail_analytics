@@ -1,0 +1,63 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.env
+.env*
+*.db
+*.sqlite3
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+.history/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Node.js (if applicable)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Test output
+*.pytest_cache/
+.cache/
+
+# Temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# System files
+Thumbs.db
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# Others
+*.env
+*.tgz
