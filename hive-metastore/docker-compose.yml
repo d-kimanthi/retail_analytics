@@ -1,0 +1,39 @@
+version: '3'
+services:
+  postgres-metastore:
+    image: postgres:14
+    container_name: postgres-hive-metastore
+    environment:
+      POSTGRES_USER: hive
+      POSTGRES_PASSWORD: hive
+      POSTGRES_DB: metastore
+    ports:
+      - "5432:5432"
+
+  hive-metastore:
+    build: .
+    container_name: hive-metastore
+    depends_on:
+      - postgres-metastore
+    environment:
+      # DB connection (your values are fine)
+      - METASTORE_DB_HOSTNAME=postgres-metastore
+      - METASTORE_DB_TYPE=postgres
+      - METASTORE_DB_NAME=metastore
+      - METASTORE_DB_USER=hive
+      - METASTORE_DB_PASSWORD=hive
+      - SERVICE_NAME=metastore
+
+      # Point HMS warehouse to S3 (use s3a in HMS)
+      - HIVE_SITE_CONF_hive_metastore_warehouse_dir=${HMS_WAREHOUSE_DIR}
+
+      # S3A filesystem + creds (so HMS can create/check paths)
+      # - HIVE_SITE_CONF_fs_s3a_impl=org.apache.hadoop.fs.s3a.S3AFileSystem
+      - HIVE_SITE_CONF_fs_s3a_aws_credentials_provider=com.amazonaws.auth.DefaultAWSCredentialsProviderChain
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      # Optional if you use profiles/roles:
+      # - AWS_PROFILE=default
+      # - AWS_REGION=us-east-1
+    ports:
+      - "9083:9083"

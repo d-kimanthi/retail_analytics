@@ -1,0 +1,29 @@
+# Core Data Processing
+pyiceberg>=0.5.0
+pyspark>=3.5.0
+kafka-python>=2.0.2
+pandas>=2.1.0
+numpy>=1.25.0
+
+# AWS Integration
+boto3>=1.28.0
+awscli>=2.13.0
+
+# Data Generation & Simulation
+faker>=19.3.0
+python-dateutil>=2.8.2
+
+# Orchestration
+dagster>=1.5.0
+dagster-aws>=0.20.0
+dagster-pandas>=0.20.0
+dagster-pyspark>=0.20.0
+
+# Development & Testing
+pytest>=7.4.0
+black>=23.7.0
+flake8>=6.1.0
+jupyter>=1.0.0
+
+# Monitoring & Logging
+python-json-logger>=2.0.7
