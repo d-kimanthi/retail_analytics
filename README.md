@@ -19,19 +19,7 @@ This project simulates such a scenario, creating a robust streaming and batch pr
 
 ## Architecture Overview
 
-```mermaid
-graph TD
-    A[Simulated POS Transactions] --> B(Kafka Topic: pos_transactions)
-    B --> C[Spark Structured Streaming Job]
-    C --> D[Iceberg Raw Table on S3]
-    D --> E[Spark Batch Job: Daily Sales Mart]
-    E --> F[Iceberg Mart Table on S3]
-    F --> G[Athena + Glue Catalog]
-    G --> H[BI Tools (Looker Studio, QuickSight)]
-    C -->|Scheduled| I[Dagster Job: Streaming & Batch]
-```
-
----
+## ![Architecture Diagram](./images/architecture_2.png)
 
 ## Technologies Used
 
